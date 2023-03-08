@@ -13,6 +13,10 @@ includes:
     taskfile: ./Taskfile.query.yml
 
 tasks:
+  default:
+    cmds:
+      - task: setup
+      - task: benchmark-all
   setup:
     deps: [subgraphs:run, delay]
     cmds:

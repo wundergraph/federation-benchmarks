@@ -1,0 +1,65 @@
+version: '3'
+
+includes:
+  taskvars: ./Taskfile.vars.yml
+
+tasks:
+  run:
+    internal: true
+    cmds:
+      - task: query-apollo-gw
+      - task: query-apollo-router
+      - task: query-graphql-mesh
+      - task: query-mercurius
+      - task: query-wundergraph-graphql
+      - task: query-wundergraph-rpc
+      - echo 'Checked all queries'
+
+  query-cmd:
+    internal: true
+    cmds:
+      - echo 'Querying {{.NAME}}'
+      - "curl -X POST -H 'content-type: application/json' --data '@./queries/{{.OPERATION}}.json' '{{.HOST}}' && echo -e '\n\n'"
+
+  query-apollo-gw:
+    cmds:
+      - task: query-cmd
+        vars:
+          NAME: apollo-gw
+          HOST: '{{.EndpointApolloGW}}'
+
+  query-apollo-router:
+    cmds:
+      - task: query-cmd
+        vars:
+          NAME: apollo-router
+          HOST: '{{.EndpointApolloRouter}}'
+
+  query-graphql-mesh:
+    cmds:
+      - task: query-cmd
+        vars:
+          NAME: graphql-mesh
+          HOST: '{{.EndpointGraphqlMesh}}'
+
+  query-mercurius:
+    cmds:
+      - task: query-cmd
+        vars:
+          NAME: mercurius
+          HOST: '{{.EndpointMercurius}}'
+
+  query-wundergraph-graphql:
+    cmds:
+      - task: query-cmd
+        vars:
+          NAME: wundergraph-graphql
+          HOST: '{{.EndpointWundergraphGraphql}}'
+
+  query-wundergraph-rpc:
+    cmds:
+      - echo 'Querying {{.NAME}}'
+      - "curl -X GET -H 'content-type: application/json' '{{.HOST}}'"
+    vars:
+      NAME: wundergraph-rpc
+      HOST: '{{.EndpointWundergraphRpc}}/{{.OPERATION}}'

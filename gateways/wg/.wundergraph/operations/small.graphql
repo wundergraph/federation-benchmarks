@@ -1,0 +1,17 @@
+query {
+    topProducts {
+        upc
+        name
+        price
+        inStock
+        reviews {
+            id
+            body
+            author {
+                id
+                name
+                username
+            }
+        }
+    }
+}

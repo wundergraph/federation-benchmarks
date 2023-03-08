@@ -1,0 +1,44 @@
+version: '3'
+
+includes:
+  subgraphs:
+    taskfile: ./Taskfile.subgraphs.yml
+  setup:
+    taskfile: ./Taskfile.setup.yml
+  run:
+    taskfile: ./Taskfile.run.yml
+  benchmark:
+    taskfile: ./Taskfile.benchmark.yml
+  query:
+    taskfile: ./Taskfile.query.yml
+
+tasks:
+  setup:
+    deps: [subgraphs:run, delay]
+    cmds:
+      - task: setup:setup-all
+      - task: subgraphs:kill
+  start:
+    deps: [subgraphs:run, delay]
+    cmds:
+      - task: run:run-all
+  delay:
+    cmds:
+      - sleep 5
+  query-all:
+    deps: [subgraphs:run, delay]
+    cmds:
+      - task: run:run-all
+      - task: delay
+      - task: query:run
+      - task: run:kill-all
+      - task: subgraphs:kill
+  benchmark-all:
+    deps: [subgraphs:run, delay]
+    cmds:
+      - task: run:run-all
+      - task: delay
+      - task: benchmark:run
+      - task: run:kill-all
+      - task: subgraphs:kill
+

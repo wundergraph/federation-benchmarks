@@ -1,0 +1,53 @@
+query {
+    topProducts {
+        upc
+        name
+        price
+        reviews {
+            id
+            body
+            author {
+                id
+                name
+                username
+                reviews {
+                    id
+                    body
+                    author {
+                        id
+                        name
+                        username
+                        reviews {
+                            id
+                            body
+                            product {
+                                inStock
+                                name
+                                price
+                                shippingEstimate
+                                upc
+                                weight
+                                reviews {
+                                    body
+                                    id
+                                    author {
+                                        id
+                                        name
+                                        reviews {
+                                            body
+                                            author {
+                                                id
+                                                name
+                                                username
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "rover supergraph compose --elv2-license accept --config ./supergraph.yaml > supergraph.graphql",
+    "start": "./start.sh"
+  },
+  "devDependencies": {
+    "@apollo/rover": "^0.12.2"
+  }
+}

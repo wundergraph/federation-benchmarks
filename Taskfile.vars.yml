@@ -1,0 +1,13 @@
+version: '3'
+
+vars:
+  CONCURRENCY: 100
+  DURATION: 10s
+  OPERATION: small
+
+  EndpointApolloGW: http://localhost:3010
+  EndpointApolloRouter: http://localhost:3011
+  EndpointGraphqlMesh: http://localhost:3012/graphql
+  EndpointMercurius: http://localhost:3013/graphql
+  EndpointWundergraphGraphql: http://localhost:9991/graphql
+  EndpointWundergraphRpc: http://localhost:9991/operations

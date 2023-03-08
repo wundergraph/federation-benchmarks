@@ -1,8 +1,8 @@
-# federation-benchmarks
+# GraphQL Federation Benchmarks
 
-Comparison of a different federation gateways, e.g. supergraphs implementations
+Comparison of a different GraphQL Federation Gateways.
 
-Found out more about Wundergraph Federation Gateway [here](https://wundergraph.com/use-cases/apollo-federation-gateway)
+Find out more about Wundergraph Federation Gateway [here](https://wundergraph.com/use-cases/apollo-federation-gateway)
 
 ## Benchmark results
 

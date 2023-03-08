@@ -1,0 +1,18 @@
+{
+  "name": "federation-demo",
+  "main": "gateway.mjs",
+  "scripts": {
+    "start": "node gateway.mjs",
+    "dev": "nodemon gateway.mjs"
+  },
+  "devDependencies": {
+    "nodemon": "latest",
+    "npm-check": "^5.9.2"
+  },
+  "dependencies": {
+    "@apollo/gateway": "^2.3.3",
+    "@apollo/query-planner": "^2.3.3",
+    "@apollo/server": "^4.4.1",
+    "graphql": "^16.6.0"
+  }
+}

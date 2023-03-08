@@ -1,0 +1,66 @@
+version: '3'
+
+includes:
+  taskvars: ./Taskfile.vars.yml
+
+tasks:
+  run:
+    internal: true
+    cmds:
+      - task: bench-apollo-gw
+      - task: bench-apollo-router
+      - task: bench-graphql-mesh
+      - task: bench-mercurius
+      - task: bench-wundergraph-graphql
+      - task: bench-wundergraph-rpc
+
+  bench-cmd:
+    internal: true
+    cmds:
+      - echo 'Running benchmark for {{.NAME}}'
+      - "hey -z {{.DURATION}} -c {{.CONCURRENCY}} -m POST -H 'content-type: application/json' -D queries/{{.OPERATION}}.json '{{.HOST}}' > results/{{.RESULT_NAME}}.txt"
+    vars:
+      RESULT_NAME: "{{.OPERATION}}_c_{{.CONCURRENCY}}_d_{{.DURATION}}_{{.NAME}}"
+
+  bench-apollo-gw:
+    cmds:
+      - task: bench-cmd
+        vars:
+          NAME: apollo-gw
+          HOST: '{{.EndpointApolloGW}}'
+
+  bench-apollo-router:
+    cmds:
+      - task: bench-cmd
+        vars:
+          NAME: apollo-router
+          HOST: '{{.EndpointApolloRouter}}'
+
+  bench-graphql-mesh:
+    cmds:
+      - task: bench-cmd
+        vars:
+          NAME: graphql-mesh
+          HOST: '{{.EndpointGraphqlMesh}}'
+
+  bench-mercurius:
+    cmds:
+      - task: bench-cmd
+        vars:
+          NAME: mercurius
+          HOST: '{{.EndpointMercurius}}'
+
+  bench-wundergraph-graphql:
+    cmds:
+      - task: bench-cmd
+        vars:
+          NAME: wundergraph-graphql
+          HOST: '{{.EndpointWundergraphGraphql}}'
+
+  bench-wundergraph-rpc:
+    cmds:
+      - "hey -z {{.DURATION}} -c {{.CONCURRENCY}} -m GET -H 'content-type: application/json' '{{.HOST}}' > results/{{.RESULT_NAME}}.txt"
+    vars:
+      NAME: wundergraph-rpc
+      HOST: '{{.EndpointWundergraphRpc}}/{{.OPERATION}}'
+      RESULT_NAME: "{{.OPERATION}}_c_{{.CONCURRENCY}}_d_{{.DURATION}}_{{.NAME}}"

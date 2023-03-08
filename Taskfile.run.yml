@@ -1,0 +1,58 @@
+version: '3'
+
+tasks:
+  run-all:
+    deps: [run-wg, run-mesh, run-mercurius, run-apollo-gw, run-apollo-router]
+    cmds:
+      - echo "All gateways is running"
+
+  kill-all:
+    deps: [kill-wg, kill-mesh, kill-mercurius, kill-apollo-gw, kill-apollo-router]
+    cmds:
+      - echo "All gateways are killed"
+
+  run-apollo-gw:
+    dir: gateways/apollo-gw
+    cmds:
+      - ./../srv-run.sh
+  kill-apollo-gw:
+    dir: gateways/apollo-gw
+    cmds:
+      - lsof -t -i :3010 | xargs kill -9
+
+  run-apollo-router:
+    dir: gateways/apollo-router
+    cmds:
+      - ./../srv-run.sh
+  kill-apollo-router:
+    dir: gateways/apollo-router
+    cmds:
+      - lsof -t -i :3011 | xargs kill -9
+
+  run-mesh:
+    dir: gateways/graphql-mesh
+    cmds:
+      - ./../srv-run.sh
+  kill-mesh:
+    dir: gateways/graphql-mesh
+    cmds:
+      - lsof -t -i :3012 | xargs kill -9
+
+  run-mercurius:
+    dir: gateways/mercurius
+    cmds:
+      - ./../srv-run.sh
+  kill-mercurius:
+    dir: gateways/mercurius
+    cmds:
+      - lsof -t -i :3013 | xargs kill -9
+
+  run-wg:
+    dir: gateways/wg
+    cmds:
+      - ./../srv-run.sh
+  kill-wg:
+    dir: gateways/wg
+    cmds:
+      - lsof -t -i :9991 | xargs kill -9
+      - lsof -t -i :9992 | xargs kill -9

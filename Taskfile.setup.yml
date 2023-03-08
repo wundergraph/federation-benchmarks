@@ -1,0 +1,31 @@
+version: '3'
+
+tasks:
+  setup-all:
+    deps: [setup-wg, setup-mesh, setup-mercurius, setup-apollo-gw, setup-apollo-router]
+    cmds:
+      - echo "All setup done"
+  setup-wg:
+    dir: gateways/wg
+    cmds:
+      - npm install
+      - npm run build
+  setup-mesh:
+    dir: gateways/graphql-mesh
+    cmds:
+      - npm install
+      - npm run build
+  setup-mercurius:
+    dir: gateways/mercurius
+    cmds:
+      - npm install
+  setup-apollo-gw:
+    dir: gateways/apollo-gw
+    cmds:
+      - npm install
+  setup-apollo-router:
+    dir: gateways/apollo-router
+    cmds:
+      - curl -sSL https://router.apollo.dev/download/nix/latest | sh
+      - npm install
+      - npm run build

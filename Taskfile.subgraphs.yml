@@ -1,0 +1,30 @@
+version: '3'
+
+tasks:
+  run:
+    deps: [kill-force]
+    dir: subgraphs/services/
+    cmds:
+      - cd accounts && ./../srv-run.sh
+      - cd inventory && ./../srv-run.sh
+      - cd products && ./../srv-run.sh
+      - cd reviews && ./../srv-run.sh
+  kill:
+    dir: subgraphs/services/
+    cmds:
+      - cd accounts && ./../srv-kill.sh
+      - cd inventory && ./../srv-kill.sh
+      - cd products && ./../srv-kill.sh
+      - cd reviews && ./../srv-kill.sh
+      - echo "All subgraphs are killed"
+  kill-force:
+    cmds:
+      - lsof -t -i :4001 | xargs kill -9
+      - lsof -t -i :4002 | xargs kill -9
+      - lsof -t -i :4003 | xargs kill -9
+      - lsof -t -i :4004 | xargs kill -9
+
+  run-in-docker:
+    dir: subgraphs/services/
+    cmds:
+      - docker-compose up -d

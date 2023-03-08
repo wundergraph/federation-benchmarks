@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@mercuriusjs/gateway": "^1.2.0",
+    "fastify": "^4.14.1",
+    "graphql": "^16.6.0"
+  }
+}

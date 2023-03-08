@@ -2,6 +2,8 @@
 
 Comparison of a different federation gateways, e.g. supergraphs implementations
 
+Found out more about Wundergraph Federation Gateway [here](https://wundergraph.com/use-cases/apollo-federation-gateway)
+
 ## Benchmark results
 
 | Supergraph Gateway          | Benchmark Duration | Slowest     | Fastest     | Average     | Requests/sec     | Latency distribution 95% | Total response count |

@@ -5,6 +5,15 @@ import (
 	"fmt"
 ) // THIS CODE IS A STARTING POINT ONLY. IT WILL NOT BE UPDATED WITH SCHEMA CHANGES.
 
+func init() {
+	for i := 11; i < 100; i++ {
+		inventory = append(inventory, &Product{
+			Upc:     fmt.Sprintf("%d", i),
+			InStock: boolean(true),
+		})
+	}
+}
+
 type Resolver struct{}
 
 func (r *Resolver) Entity() EntityResolver {
@@ -40,6 +49,34 @@ var inventory = []*Product{
 	},
 	{
 		Upc:     "3",
+		InStock: boolean(true),
+	},
+	{
+		Upc:     "4",
+		InStock: boolean(false),
+	},
+	{
+		Upc:     "5",
+		InStock: boolean(true),
+	},
+	{
+		Upc:     "6",
+		InStock: boolean(true),
+	},
+	{
+		Upc:     "7",
+		InStock: boolean(false),
+	},
+	{
+		Upc:     "8",
+		InStock: boolean(true),
+	},
+	{
+		Upc:     "9",
+		InStock: boolean(true),
+	},
+	{
+		Upc:     "10",
 		InStock: boolean(true),
 	},
 }

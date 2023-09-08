@@ -42,6 +42,11 @@ var users = []*User{
 		Name:     str("Alan Turing"),
 		Username: str("@complete"),
 	},
+	{
+		ID:       "3",
+		Name:     str("Sarah Hopper"),
+		Username: str("@shopper"),
+	},
 }
 
 func str(s string) *string {

@@ -1,0 +1,1 @@
+{"query":"query Benchmark {\n  topProducts(first: 100) {\n    upc\n    name\n    price\n    inStock\n    reviews {\n      id\n      body\n      author {\n        id\n        name\n        username\n      }\n    }\n  }\n}"}

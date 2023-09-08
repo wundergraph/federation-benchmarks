@@ -5,6 +5,17 @@ import (
 	"fmt"
 ) // THIS CODE IS A STARTING POINT ONLY. IT WILL NOT BE UPDATED WITH SCHEMA CHANGES.
 
+func init() {
+	for i := 12; i < 100; i++ {
+		reviews = append(reviews, &Review{
+			ID:      fmt.Sprintf("%d", i),
+			Author:  &User{ID: "3", Username: str("@shopper")},
+			Product: &Product{Upc: fmt.Sprintf("%d", i)},
+			Body:    str("It's ok."),
+		})
+	}
+}
+
 type Resolver struct{}
 
 func (r *Resolver) Entity() EntityResolver {
@@ -72,11 +83,54 @@ var reviews = []*Review{
 		Product: &Product{Upc: "1"},
 		Body:    str("Prefer something else."),
 	},
+	{
+		ID:      "5",
+		Author:  &User{ID: "3", Username: str("@shopper")},
+		Product: &Product{Upc: "4"},
+		Body:    str("Awesome!"),
+	},
+	{
+		ID:      "6",
+		Author:  &User{ID: "3", Username: str("@shopper")},
+		Product: &Product{Upc: "5"},
+		Body:    str("Could be better."),
+	},
+	{
+		ID:      "7",
+		Author:  &User{ID: "3", Username: str("@shopper")},
+		Product: &Product{Upc: "6"},
+		Body:    str("Ok."),
+	},
+	{
+		ID:      "8",
+		Author:  &User{ID: "3", Username: str("@shopper")},
+		Product: &Product{Upc: "7"},
+		Body:    str("Liked it!"),
+	},
+	{
+		ID:      "9",
+		Author:  &User{ID: "3", Username: str("@shopper")},
+		Product: &Product{Upc: "8"},
+		Body:    str("Not for me."),
+	},
+	{
+		ID:      "10",
+		Author:  &User{ID: "3", Username: str("@shopper")},
+		Product: &Product{Upc: "9"},
+		Body:    str("Liked it!"),
+	},
+	{
+		ID:      "11",
+		Author:  &User{ID: "3", Username: str("@shopper")},
+		Product: &Product{Upc: "10"},
+		Body:    str("A bit pricey."),
+	},
 }
 
 var usernames = []*User{
 	{ID: "1", Username: str("@ada")},
 	{ID: "2", Username: str("@complete")},
+	{ID: "3", Username: str("@shopper")},
 }
 
 func str(s string) *string {

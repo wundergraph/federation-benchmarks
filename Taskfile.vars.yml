@@ -1,9 +1,9 @@
 version: '3'
 
 vars:
-  CONCURRENCY: 100
+  CONCURRENCY: 200
   DURATION: 10s
-  OPERATION: small
+  OPERATION: big
 
   EndpointApolloGW: http://localhost:3010
   EndpointApolloRouter: http://localhost:3011

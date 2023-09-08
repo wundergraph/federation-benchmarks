@@ -8,6 +8,17 @@ import (
 	"time"
 ) // THIS CODE IS A STARTING POINT ONLY. IT WILL NOT BE UPDATED WITH SCHEMA CHANGES.
 
+func init() {
+	for i := 11; i < 100; i++ {
+		products = append(products, &Product{
+			Upc:    fmt.Sprintf("%d", i),
+			Name:   str(fmt.Sprintf("Product %d", i)),
+			Price:  num(i),
+			Weight: num(i),
+		})
+	}
+}
+
 type Resolver struct{}
 
 func (r *Resolver) Query() QueryResolver {
@@ -112,6 +123,48 @@ var products = []*Product{
 		Name:   str("Chair"),
 		Price:  num(54),
 		Weight: num(50),
+	},
+	{
+		Upc:    "4",
+		Name:   str("Stool"),
+		Price:  num(598),
+		Weight: num(100),
+	},
+	{
+		Upc:    "5",
+		Name:   str("Bench"),
+		Price:  num(345),
+		Weight: num(100),
+	},
+	{
+		Upc:    "6",
+		Name:   str("Shelf"),
+		Price:  num(1099),
+		Weight: num(100),
+	},
+	{
+		Upc:    "7",
+		Name:   str("Desk"),
+		Price:  num(999),
+		Weight: num(100),
+	},
+	{
+		Upc:    "8",
+		Name:   str("Dresser"),
+		Price:  num(1999),
+		Weight: num(1000),
+	},
+	{
+		Upc:    "9",
+		Name:   str("Bed"),
+		Price:  num(999),
+		Weight: num(1000),
+	},
+	{
+		Upc:    "10",
+		Name:   str("Mirror"),
+		Price:  num(799),
+		Weight: num(100),
 	},
 }
 

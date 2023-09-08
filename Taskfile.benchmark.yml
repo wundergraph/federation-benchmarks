@@ -64,3 +64,10 @@ tasks:
       NAME: wundergraph-rpc
       HOST: '{{.EndpointWundergraphRpc}}/{{.OPERATION}}'
       RESULT_NAME: "{{.OPERATION}}_c_{{.CONCURRENCY}}_d_{{.DURATION}}_{{.NAME}}"
+
+  bench-cosmo-router:
+    cmds:
+      - task: bench-cmd
+        vars:
+          NAME: cosmo-router
+          HOST: '{{.EndpointCosmoRouter}}'

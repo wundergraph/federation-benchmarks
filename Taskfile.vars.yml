@@ -11,3 +11,4 @@ vars:
   EndpointMercurius: http://localhost:3013/graphql
   EndpointWundergraphGraphql: http://localhost:9991/graphql
   EndpointWundergraphRpc: http://localhost:9991/operations
+  EndpointCosmoRouter: http://localhost:3003/graphql
